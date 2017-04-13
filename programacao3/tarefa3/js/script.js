@@ -4,7 +4,7 @@
 // seu template HTML.
 
 var dataUrl = "tarefa3/dados/menu.json",
-    itensHtml = "item-snippet.html";
+    itensHtml = "js/item-snippet.html";
     
 // função facilitadora para inserir HTML em um elemento
 function insereHtml(seletor, html) {
