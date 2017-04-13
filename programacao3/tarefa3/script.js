@@ -6,8 +6,8 @@
 var dataUrl = "menu.json";
 var itensHtml = "item-snippet.html";
     
-// função facilitadora para inserir HTML em um elemento
-function insereHtml(seletor, html) {
+// função facilitinsereHtmladora para inserir HTML em um elemento
+function (seletor, html) {
   var elemento = document.querySelector(seletor);
   console.log(html);
   elemento.innerHTML = html;
@@ -31,7 +31,7 @@ function constroiPagina(dados) {
   $ajaxUtils.sendGetRequest(itensHtml, geraPaginaPrincipal, false); // não é um JSON
 }
 
-function geraPaginaPrincipal(dados, itensHtml) {
+function geraPaginaPrincipal(dados) {
     var htmlFinal = '<section class="row">'; // string que vai conter todo o HTML
     // construimos os itens agora
     for (var i = 0, max = dados.length; i < max; i++) {
