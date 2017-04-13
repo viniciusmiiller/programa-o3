@@ -36,16 +36,11 @@ function geraPaginaPrincipal(itensHtml) {
     // construimos os itens agora
     for (var i = 0, max = itensHtml.length; i < max; i++) {
         // var html = itensHtml,
-            nome = itensHtml[i].name.first + " " + itensHtml[i].name.last,
-            empresa = itensHtml[i].company,
-            email = itensHtml[i].email,
-            fone = itensHtml[i].phone;
+            email = itensHtml[i].titulo,
+            fone = itensHtml[i].conteudo;
           
-        html = inserePropriedade(html, "nome", nome);
-        html = inserePropriedade(html, "empresa", empresa);
-        html = inserePropriedade(html, "email", email);
-        html = inserePropriedade(html, "fone", fone);
-
+        html = inserePropriedade(html, "titulo", titulo);
+        html = inserePropriedade(html, "conteudo", conteudo);
         htmlFinal += html;
     }
     htmlFinal += '</section>';
