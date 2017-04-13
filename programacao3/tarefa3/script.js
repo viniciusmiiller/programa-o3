@@ -31,13 +31,13 @@ function constroiPagina(dados) {
   $ajaxUtils.sendGetRequest(itensHtml, geraPaginaPrincipal, false); // não é um JSON
 }
 
-function geraPaginaPrincipal(itensHtml) {
+function geraPaginaPrincipal(dados, itensHtml) {
     var htmlFinal = '<section class="row">'; // string que vai conter todo o HTML
     // construimos os itens agora
-    for (var i = 0, max = itensHtml.length; i < max; i++) {
-        // var html = itensHtml,
-            email = itensHtml[i].titulo,
-            fone = itensHtml[i].conteudo;
+    for (var i = 0, max = dados.length; i < max; i++) {
+          var html = itensHtml,
+            titulo = dados[i].titulo,
+            conteudo = dados[i].conteudo;
           
         html = inserePropriedade(html, "titulo", titulo);
         html = inserePropriedade(html, "conteudo", conteudo);
