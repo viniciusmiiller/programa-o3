@@ -1,3 +1,8 @@
+// NOTE que este script foi o usado no exercício Ajax 4 e não vai funcionar
+// automaticamente com seu código. Você deve adaptá-lo, 
+// especialmente a função geraPaginaPrincipal, conforme
+// seu template HTML.
+
 var dataUrl = "data.json",
     itensHtml = "item-snippet.html";
     
@@ -17,34 +22,36 @@ function inserePropriedade(template, propName, propValue) {
   var propriedade = "{{" + propName + "}}";
   // substitui todas as ocorrências de propriedade por propValue
   // em template
-  template = template.replace(new RegExp(propriedade, "g"),
-              propValue);
+  template = template.replace(new RegExp(propriedade, "g"), propValue);
   return template;
 }
 
 // constroi a pagina, com os dados recebidos por parametro
 function constroiPagina(dados) {
-  var htmlFinal = '<section class="row">'; // string que vai conter todo o HTML
-  // construimos os itens agora
-  $ajaxUtils.sendGetRequest(itensHtml, function(itensHtml) {
+  $ajaxUtils.sendGetRequest(itensHtml, geraPaginaPrincipal, false); // não é um JSON
+}
+
+function geraPaginaPrincipal(itensHtml) {
+    var htmlFinal = '<section class="row">'; // string que vai conter todo o HTML
+    // construimos os itens agora
     for (var i = 0, max = dados.length; i < max; i++) {
-      var html = itensHtml,
-          nome = dados[i].name.first + " " + dados[i].name.last,
-          empresa = dados[i].company,
-          email = dados[i].email,
-          fone = dados[i].phone;
+        var html = itensHtml,
+            nome = dados[i].name.first + " " + dados[i].name.last,
+            empresa = dados[i].company,
+            email = dados[i].email,
+            fone = dados[i].phone;
           
-      html = inserePropriedade(html, "nome", nome);
-      html = inserePropriedade(html, "empresa", empresa);
-      html = inserePropriedade(html, "email", email);
-      html = inserePropriedade(html, "fone", fone);
-      
-      htmlFinal += html;
+        html = inserePropriedade(html, "nome", nome);
+        html = inserePropriedade(html, "empresa", empresa);
+        html = inserePropriedade(html, "email", email);
+        html = inserePropriedade(html, "fone", fone);
+
+        htmlFinal += html;
     }
     htmlFinal += '</section>';
     insereHtml("#content", htmlFinal);
-  }, false); // não é um JSON
 }
+
 // vamos construir o sendGetRequest:
 // definir a URL (dataUrl)
 // e o metodo constroiPagina
