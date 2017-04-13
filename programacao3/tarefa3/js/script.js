@@ -3,7 +3,7 @@
 // especialmente a função geraPaginaPrincipal, conforme
 // seu template HTML.
 
-var dataUrl = "dados/menu.json",
+var dataUrl = "../dados/menu.json",
     itensHtml = "js/item-snippet.html";
     
 // função facilitadora para inserir HTML em um elemento
