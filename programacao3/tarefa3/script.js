@@ -34,12 +34,12 @@ function constroiPagina(dados) {
 function geraPaginaPrincipal(itensHtml) {
     var htmlFinal = '<section class="row">'; // string que vai conter todo o HTML
     // construimos os itens agora
-    for (var i = 0, max = dados.length; i < max; i++) {
-        var html = itensHtml,
-            nome = dados[i].name.first + " " + dados[i].name.last,
-            empresa = dados[i].company,
-            email = dados[i].email,
-            fone = dados[i].phone;
+    for (var i = 0, max = itensHtml.length; i < max; i++) {
+        // var html = itensHtml,
+            nome = itensHtml[i].name.first + " " + itensHtml[i].name.last,
+            empresa = itensHtml[i].company,
+            email = itensHtml[i].email,
+            fone = itensHtml[i].phone;
           
         html = inserePropriedade(html, "nome", nome);
         html = inserePropriedade(html, "empresa", empresa);
